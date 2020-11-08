@@ -16,7 +16,7 @@ public class ItemHolder : MonoBehaviour
     private int emptySlotId = -1;
     private SlotType emptySlotType = SlotType.Any;
 
-    // Called by UI Manager
+    // Called by UIManager.Init when the game starts
     public void Init()
     {
         Instance = this;

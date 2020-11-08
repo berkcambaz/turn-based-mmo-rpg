@@ -24,14 +24,17 @@ public class ItemSlot : MonoBehaviour
     {
         Debug.Log($"Entered to {slotId}");
         // Since the mouse hovering on the slot, enable slot shadow on the slot's position
-        ItemSlotShadow.Enable(transform.position);
+        ItemSlotShadow.Instance.Enable(transform.position);
+        StartCoroutine(ShowItemProperty());
     }
 
     public void OnPointerExit()
     {
         Debug.Log($"Exited from {slotId}");
         // Since the mouse is not anymore hovering on the slot, disable the slot shadow
-        ItemSlotShadow.Disable();
+        ItemSlotShadow.Instance.Disable();
+        StopAllCoroutines();
+        ItemPropertyDisplayer.Instance.gameObject.SetActive(false);
     }
 
     public void OnPointerClick()
@@ -44,6 +47,23 @@ public class ItemSlot : MonoBehaviour
                 image.sprite = ImageManager.Instance.transparent1x1;
             else
                 image.sprite = ItemManager.Instance.itemProperties[item.id].sprite;
+        }
+    }
+
+    private IEnumerator ShowItemProperty()
+    {
+        if (item.id != -1)
+        {
+            yield return new WaitForSeconds(0.25f);
+
+            // Show item's properties
+            //Vector3 slotPos = Game.Instance.cam.WorldToScreenPoint(transform.position);
+            Vector3 slotPos = transform.position;
+            //new Vector3(slotPos.x - Screen.width / 2f, slotPos.y - Screen.height / 2f, slotPos.z)
+            Debug.Log(slotPos);
+            Debug.Log(transform.localScale);
+            ItemPropertyDisplayer.Instance.SetDisplay(slotPos, item.id);
+            ItemPropertyDisplayer.Instance.gameObject.SetActive(true);
         }
     }
 }

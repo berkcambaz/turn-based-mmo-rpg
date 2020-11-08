@@ -7,19 +7,20 @@ public class ItemSlotShadow : MonoBehaviour
 
     public Image image;
 
-    public void Start()
+    // Called by UIManager.Init when the game starts
+    public void Init()
     {
         Instance = this;
     }
 
-    public static void Enable(Vector3 _position)
+    public void Enable(Vector3 _position)
     {
-        Instance.transform.position = _position;
-        Instance.image.enabled = true;
+        transform.position = _position;
+        image.enabled = true;
     }
 
-    public static void Disable()
+    public void Disable()
     {
-        Instance.image.enabled = false;
+        image.enabled = false;
     }
 }

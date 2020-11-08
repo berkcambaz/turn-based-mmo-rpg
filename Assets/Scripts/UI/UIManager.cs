@@ -9,6 +9,8 @@ public class UIManager : MonoBehaviour
     public Canvas smithingCanvas;
     public Canvas mapCanvas;
 
+    public ItemSlotShadow itemSlotShadow;
+    public ItemPropertyDisplayer itemPropertyDisplayer;
     public ItemHolder itemHolder;
 
     private bool inventoryTabOpened = false;
@@ -19,6 +21,8 @@ public class UIManager : MonoBehaviour
     // Called by Game when the game starts
     public void Init()
     {
+        itemSlotShadow.Init();
+        itemPropertyDisplayer.Init(); 
         itemHolder.Init();
     }
 

@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dd6bcd29e988ec429ee1567fcb66bcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rectTransform: {fileID: 5910220149380656474}
   image: {fileID: 5954389658105253185}
   item:
     id: -1
