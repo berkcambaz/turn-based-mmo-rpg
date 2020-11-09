@@ -57,11 +57,7 @@ public class ItemSlot : MonoBehaviour
             yield return new WaitForSeconds(0.25f);
 
             // Show item's properties
-            //Vector3 slotPos = Game.Instance.cam.WorldToScreenPoint(transform.position);
             Vector3 slotPos = transform.position;
-            //new Vector3(slotPos.x - Screen.width / 2f, slotPos.y - Screen.height / 2f, slotPos.z)
-            Debug.Log(slotPos);
-            Debug.Log(transform.localScale);
             ItemPropertyDisplayer.Instance.SetDisplay(slotPos, item.id);
             ItemPropertyDisplayer.Instance.gameObject.SetActive(true);
         }

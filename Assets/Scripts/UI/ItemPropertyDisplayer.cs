@@ -7,8 +7,11 @@ public class ItemPropertyDisplayer : MonoBehaviour
 {
     public static ItemPropertyDisplayer Instance;
 
+    public RectTransform rectTransform;
+
     public Text itemName;
     public Text itemDescription;
+
 
     // Called by UIManager.Init when the game starts
     public void Init()
@@ -19,7 +22,7 @@ public class ItemPropertyDisplayer : MonoBehaviour
     public void SetDisplay(Vector3 _pos, int _itemId)
     {
         transform.position = _pos;
-        //Debug.Log(transform.position);
+        Debug.Log(transform.position);
         itemName.text = ItemManager.Instance.itemProperties[_itemId].name;
         itemDescription.text = ItemManager.Instance.itemProperties[_itemId].description;
     }

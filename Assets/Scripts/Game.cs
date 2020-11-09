@@ -7,6 +7,7 @@ public class Game : MonoBehaviour
     public static Game Instance;
 
     public Camera cam;
+    public float aspectRatio;
 
     // --- Manager scripts --- //
     public ImageManager imageManager;
@@ -17,6 +18,8 @@ public class Game : MonoBehaviour
     void Awake()
     {
         Instance = this;
+
+        aspectRatio = (Screen.width / 1920f) / (Screen.height / 1080f);
 
         // Initialize all manager scripts
         InitManagers();

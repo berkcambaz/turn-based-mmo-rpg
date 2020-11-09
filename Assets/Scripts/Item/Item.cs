@@ -7,6 +7,7 @@ using UnityEngine;
 public class ItemProperty
 {
     public string name;
+    [TextArea(1, 3)]
     public string description;
     public int id;
     public ItemType itemType;

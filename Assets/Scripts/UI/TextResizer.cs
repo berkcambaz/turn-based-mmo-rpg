@@ -9,9 +9,12 @@ public class TextResizer : MonoBehaviour
     public Text text;
     public int textCharLength;
     public int increaseHeight;
+    private Vector2 defaultSize = -Vector2.one;
 
     public void OnEnable()
     {
+        if (defaultSize == -Vector2.one)
+            defaultSize = text.rectTransform.sizeDelta;
         CheckTextSize();
     }
 
@@ -29,7 +32,7 @@ public class TextResizer : MonoBehaviour
             ++ratio;
         }
 
-        Vector2 sizeDt = new Vector2(text.rectTransform.sizeDelta.x, text.rectTransform.sizeDelta.y + (ratio * increaseHeight));
+        Vector2 sizeDt = new Vector2(defaultSize.x, defaultSize.y + (ratio * increaseHeight));
         text.rectTransform.sizeDelta = sizeDt;
     }
 }
