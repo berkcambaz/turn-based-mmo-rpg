@@ -8,11 +8,14 @@ using UnityEngine;
 public class ItemProperty
 {
     public string name;
+
     [TextArea(1, 3)]
     public string description;
-    public int id;
     public ItemType itemType;
+    public int id;
     public Sprite sprite;
+
+    public Modifier[] modifiers;
 }
 
 [System.Serializable]
@@ -51,4 +54,25 @@ public enum ItemType
     Weapon_Bow,
     Weapon_Staff,
     Accessory
+}
+
+[System.Serializable]
+public class Modifier
+{
+    public string name;
+    public ModifierType type;
+    public int[] values;
+}
+
+public enum ModifierType
+{
+    Health_Point,
+    Attack_Damage,
+    Ability_Power,
+    Armor,
+    Magic_Resist,
+    Armor_Penetration,
+    Magic_Penetration,
+    Critical_Strike,
+    Block
 }

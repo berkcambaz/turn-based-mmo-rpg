@@ -14,7 +14,7 @@ public class Game : MonoBehaviour
     public ItemManager itemManager;
     public UIManager uiManager;
 
-    void Awake()
+    public void Awake()
     {
         Instance = this;
 

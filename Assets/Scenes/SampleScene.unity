@@ -9311,64 +9311,112 @@ MonoBehaviour:
   itemProperties:
   - name: Wood Sword
     description: 
-    id: 0
     itemType: 5
+    id: 0
     sprite: {fileID: 21300000, guid: 7b4a3cfc3d31cad47b297f2c0628334b, type: 3}
+    modifiers:
+    - name: Attack Damage
+      type: 1
+      values: 180000002000000028000000
   - name: Stone Sword
     description: 
-    id: 0
     itemType: 5
+    id: 0
     sprite: {fileID: 21300000, guid: 5ba936d80bb31b447ad1be9f91f04556, type: 3}
+    modifiers:
+    - name: Attack Damage
+      type: 1
+      values: 600000008000000096000000
   - name: Iron Sword
     description: 
-    id: 0
     itemType: 5
+    id: 0
     sprite: {fileID: 21300000, guid: 9b545931aa7631f40b003a58943b383b, type: 3}
+    modifiers:
+    - name: Attack Damage
+      type: 1
+      values: 800100000002000080020000
   - name: Gold Sword
     description: 
-    id: 0
     itemType: 5
+    id: 0
     sprite: {fileID: 21300000, guid: 8b2fcf3648791b34ba278c3773e2e01b, type: 3}
+    modifiers:
+    - name: Attack Damage
+      type: 1
+      values: 0006000000080000000a0000
   - name: Netherite Sword
     description: 
-    id: 0
     itemType: 5
+    id: 0
     sprite: {fileID: 21300000, guid: e283bb9b574e08e448e32c8ebab07d4e, type: 3}
+    modifiers:
+    - name: Attack Damage
+      type: 1
+      values: 001800000020000000280000
   - name: Diamond Sword
     description: 
-    id: 0
     itemType: 5
+    id: 0
     sprite: {fileID: 21300000, guid: b872df0e938107e4ea9b53368320d712, type: 3}
+    modifiers:
+    - name: Attack Damage
+      type: 1
+      values: 006000000080000000a00000
   - name: Wood Bow
     description: 
-    id: 0
     itemType: 6
+    id: 0
     sprite: {fileID: 21300000, guid: 942580c0010366c42b31e79a71c81b93, type: 3}
+    modifiers:
+    - name: Attack Damage
+      type: 1
+      values: 180000002000000028000000
   - name: Stone Bow
     description: 
-    id: 0
     itemType: 6
+    id: 0
     sprite: {fileID: 21300000, guid: cc775df9b9e898f40b47ff4a7cfe140a, type: 3}
+    modifiers:
+    - name: Attack Damage
+      type: 1
+      values: 600000008000000096000000
   - name: Iron Bow
     description: 
-    id: 0
     itemType: 6
+    id: 0
     sprite: {fileID: 21300000, guid: 6d183a2ffa462dc43b953f3108cf93d5, type: 3}
+    modifiers:
+    - name: Attack Damage
+      type: 1
+      values: 800100000002000080020000
   - name: Gold Bow
     description: 
-    id: 0
     itemType: 6
+    id: 0
     sprite: {fileID: 21300000, guid: 505fd19f70f5b9945a8407cb0c8625fb, type: 3}
+    modifiers:
+    - name: Attack Damage
+      type: 1
+      values: 0006000000080000000a0000
   - name: Netherite Bow
     description: 
-    id: 0
     itemType: 6
+    id: 0
     sprite: {fileID: 21300000, guid: 65150bbf13afec54abe1371a262df2ef, type: 3}
+    modifiers:
+    - name: Attack Damage
+      type: 1
+      values: 001800000020000000280000
   - name: Diamond Bow
     description: 
-    id: 0
     itemType: 6
+    id: 0
     sprite: {fileID: 21300000, guid: ece33ee22f97ab24c984e8cbff853b56, type: 3}
+    modifiers:
+    - name: Attack Damage
+      type: 1
+      values: 006000000080000000a00000
 --- !u!1 &1739957109
 GameObject:
   m_ObjectHideFlags: 0
