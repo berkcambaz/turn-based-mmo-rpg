@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 [System.Serializable]
@@ -23,11 +24,31 @@ public class Item
     {
         id = _id;
     }
+
+    public static bool operator ==(Item a, Item b)
+    {
+        if (ItemManager.Instance.itemProperties[a.id].itemType == ItemManager.Instance.itemProperties[b.id].itemType)
+            return true;
+
+        return false;
+    }
+
+    public static bool operator !=(Item a, Item b)
+    {
+        return !(a == b);
+    }
 }
 
 public enum ItemType
 {
-    Armor,
-    Weapon,
+    None = -1,
+    Any,
+    Armor_Helmet,
+    Armor_Chestplate,
+    Armor_Leggings,
+    Armor_Boots,
+    Weapon_Sword,
+    Weapon_Bow,
+    Weapon_Staff,
     Accessory
 }

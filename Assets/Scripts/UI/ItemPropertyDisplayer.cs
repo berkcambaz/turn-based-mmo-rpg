@@ -7,8 +7,6 @@ public class ItemPropertyDisplayer : MonoBehaviour
 {
     public static ItemPropertyDisplayer Instance;
 
-    public RectTransform rectTransform;
-
     public Text itemName;
     public Text itemDescription;
 

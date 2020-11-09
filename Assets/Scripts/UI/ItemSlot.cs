@@ -10,12 +10,13 @@ public class ItemSlot : MonoBehaviour
     public Item item;
 
     public int slotId = -1;
-    public SlotType slotType = SlotType.Any;
+    public ItemType slotItemType = ItemType.None;
 
     public void Start()
     {
         // When the inventory is opened for the first time, 
         // if there is an item in the slot, set the slot's sprite to item's sprite
+        // set it's type to slot item t
         if (item.id != -1)
             image.sprite = ItemManager.Instance.itemProperties[item.id].sprite;
     }
@@ -40,7 +41,7 @@ public class ItemSlot : MonoBehaviour
     public void OnPointerClick()
     {
         Debug.Log($"Clicked at {slotId}");
-        bool itemChanged = ItemHolder.Instance.HoldItem(ref item, slotType, slotId);
+        bool itemChanged = ItemHolder.Instance.HoldItem(ref item, slotItemType, slotId);
         if (itemChanged)
         {
             if (item.id == -1)
@@ -56,18 +57,15 @@ public class ItemSlot : MonoBehaviour
         {
             yield return new WaitForSeconds(0.25f);
 
+            // Check if after 0.25 seconds, there is still an
+            // item in the slot, if not, then exit this function
+            if (item.id != -1)
+                yield break;
+
             // Show item's properties
             Vector3 slotPos = transform.position;
             ItemPropertyDisplayer.Instance.SetDisplay(slotPos, item.id);
             ItemPropertyDisplayer.Instance.gameObject.SetActive(true);
         }
     }
-}
-
-public enum SlotType
-{
-    Any = -1,
-    Armor,
-    Weapon,
-    Accessory
 }

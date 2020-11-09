@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using UnityEngine.UI;
 
 public class ItemHolder : MonoBehaviour
@@ -13,8 +14,8 @@ public class ItemHolder : MonoBehaviour
 
     private bool holdingItem = false;
     private Item itemHeld = new Item(-1);
-    private int emptySlotId = -1;
-    private SlotType emptySlotType = SlotType.Any;
+    private int holderSlotId = -1;
+    private ItemType holderItemType = ItemType.None;
 
     // Called by UIManager.Init when the game starts
     public void Init()
@@ -22,9 +23,10 @@ public class ItemHolder : MonoBehaviour
         Instance = this;
     }
 
-    public bool HoldItem(ref Item _item, SlotType _slotType, int _slotId)
+    public bool HoldItem(ref Item _item, ItemType _slotItemType, int _slotId)
     {
-        if (itemHeld.id != -1 && _slotType != SlotType.Any && (int)ItemManager.Instance.itemProperties[itemHeld.id].itemType != (int)_slotType)
+        // If there is no item held & 
+        if (itemHeld.id != -1 && _slotItemType != ItemType.Any && (int)ItemManager.Instance.itemProperties[itemHeld.id].itemType != (int)_slotItemType)
             return false;
 
         if (holdingItem)
@@ -37,8 +39,8 @@ public class ItemHolder : MonoBehaviour
                 StopAllCoroutines();
                 _item = itemHeld;
                 itemHeld = new Item(-1);
-                emptySlotId = -1;
-                emptySlotType = SlotType.Any;
+                holderSlotId = -1;
+                holderItemType = ItemType.None;
 
                 return true;
             }
@@ -58,8 +60,8 @@ public class ItemHolder : MonoBehaviour
                 return false;
 
             itemHeld = _item;
-            emptySlotId = _slotId;
-            emptySlotType = _slotType;
+            holderSlotId = _slotId;
+            holderItemType = _slotItemType;
             _item = new Item(-1);
             image.sprite = ItemManager.Instance.itemProperties[itemHeld.id].sprite;
             image.enabled = true;
@@ -74,20 +76,25 @@ public class ItemHolder : MonoBehaviour
     {
         if (itemHeld.id != -1)
         {
-            switch (emptySlotType)
+            switch (holderItemType)
             {
-                case SlotType.Any:
-                    InventoryManager.Instance.inventoryItemSlots[emptySlotId].item = itemHeld;
-                    InventoryManager.Instance.inventoryItemSlots[emptySlotId].image.sprite = ItemManager.Instance.itemProperties[itemHeld.id].sprite;
+                case ItemType.None:
+                    InventoryManager.Instance.inventoryItemSlots[holderSlotId].item = itemHeld;
+                    InventoryManager.Instance.inventoryItemSlots[holderSlotId].image.sprite = ItemManager.Instance.itemProperties[itemHeld.id].sprite;
                     break;
-                case SlotType.Armor:
-                case SlotType.Weapon:
-                case SlotType.Accessory:
-                    InventoryManager.Instance.equipmentItemSlots[emptySlotId].item = itemHeld;
-                    InventoryManager.Instance.equipmentItemSlots[emptySlotId].image.sprite = ItemManager.Instance.itemProperties[itemHeld.id].sprite;
+                case ItemType.Armor_Helmet:
+                case ItemType.Armor_Chestplate:
+                case ItemType.Armor_Leggings:
+                case ItemType.Armor_Boots:
+                case ItemType.Weapon_Sword:
+                case ItemType.Weapon_Bow:
+                case ItemType.Weapon_Staff:
+                case ItemType.Accessory:
+                    InventoryManager.Instance.equipmentItemSlots[holderSlotId].item = itemHeld;
+                    InventoryManager.Instance.equipmentItemSlots[holderSlotId].image.sprite = ItemManager.Instance.itemProperties[itemHeld.id].sprite;
                     break;
                 default:
-                    Debug.LogError($"There is no slot type with Id {(int)emptySlotType}");
+                    Debug.LogError($"There is no item type with Id {(int)holderItemType}");
                     break;
             }
             itemHeld = new Item(-1);

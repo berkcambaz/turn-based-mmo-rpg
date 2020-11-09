@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class TextResizer : MonoBehaviour
 {
     public Text text;
+    public LayoutElement layoutElement;
+
     public int textCharLength;
     public int increaseHeight;
     private Vector2 defaultSize = -Vector2.one;
@@ -21,6 +23,12 @@ public class TextResizer : MonoBehaviour
     private void CheckTextSize()
     {
         string str = text.text;
+
+        if (str.Length == 0) { 
+            layoutElement.preferredHeight = 0;
+            return;
+        }
+
         int ratio = 0;
         int index = 0;
 
@@ -32,7 +40,6 @@ public class TextResizer : MonoBehaviour
             ++ratio;
         }
 
-        Vector2 sizeDt = new Vector2(defaultSize.x, defaultSize.y + (ratio * increaseHeight));
-        text.rectTransform.sizeDelta = sizeDt;
+        layoutElement.preferredHeight = defaultSize.y + (ratio * increaseHeight);
     }
 }
