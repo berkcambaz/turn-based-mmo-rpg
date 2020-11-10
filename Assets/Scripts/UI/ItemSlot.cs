@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class ItemSlot : MonoBehaviour
 {
     public Image image;
+    public Image durabilityImage;
+    public RectTransform durabilityRectTransform;
 
     public Item item;
 
@@ -19,6 +21,8 @@ public class ItemSlot : MonoBehaviour
         // set it's type to slot item type
         if (item.id != -1)
             image.sprite = ItemManager.Instance.itemProperties[item.id].sprite;
+
+        SetDurabilityBar();
     }
 
     public void OnPointerEnter()
@@ -47,6 +51,36 @@ public class ItemSlot : MonoBehaviour
                 image.sprite = ImageManager.Instance.transparent1x1;
             else
                 image.sprite = ItemManager.Instance.itemProperties[item.id].sprite;
+
+            SetDurabilityBar();
+        }
+    }
+
+    private void SetDurabilityBar()
+    {
+        switch (item.durability)
+        {
+            case ItemDurability.None:
+                transform.GetChild(0).gameObject.SetActive(false);
+                break;
+            case ItemDurability.Low:
+                durabilityRectTransform.sizeDelta = new Vector2(15f, durabilityRectTransform.sizeDelta.y);
+                durabilityImage.color = new Color32(255, 0, 0, 255);
+                transform.GetChild(0).gameObject.SetActive(true);
+                break;
+            case ItemDurability.Medium:
+                durabilityRectTransform.sizeDelta = new Vector2(30f, durabilityRectTransform.sizeDelta.y);
+                durabilityImage.color = new Color32(255, 255, 0, 255);
+                transform.GetChild(0).gameObject.SetActive(true);
+                break;
+            case ItemDurability.High:
+                durabilityRectTransform.sizeDelta = new Vector2(60f, durabilityRectTransform.sizeDelta.y);
+                durabilityImage.color = new Color32(0, 255, 0, 255);
+                transform.GetChild(0).gameObject.SetActive(true);
+                break;
+            default:
+                transform.GetChild(0).gameObject.SetActive(false);
+                break;
         }
     }
 
