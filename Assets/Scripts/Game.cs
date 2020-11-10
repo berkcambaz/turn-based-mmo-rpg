@@ -11,6 +11,7 @@ public class Game : MonoBehaviour
     // --- Manager scripts --- //
     public ImageManager imageManager;
     public InventoryManager inventoryManager;
+    public ItemModifierManager ItemModifierManager;
     public ItemManager itemManager;
     public UIManager uiManager;
 
@@ -28,6 +29,7 @@ public class Game : MonoBehaviour
     {
         imageManager.Init();
         inventoryManager.Init();
+        ItemModifierManager.Init();
         itemManager.Init();
         uiManager.Init();
     }

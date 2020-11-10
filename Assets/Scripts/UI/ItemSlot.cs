@@ -15,8 +15,8 @@ public class ItemSlot : MonoBehaviour
     public void Start()
     {
         // When the inventory is opened for the first time, 
-        // if there is an item in the slot, set the slot's sprite to item's sprite
-        // set it's type to slot item t
+        // if there is an item in the slot, set the slot's sprite to item's sprite,
+        // set it's type to slot item type
         if (item.id != -1)
             image.sprite = ItemManager.Instance.itemProperties[item.id].sprite;
     }
@@ -59,12 +59,12 @@ public class ItemSlot : MonoBehaviour
 
             // Check if after 0.25 seconds, there is still an
             // item in the slot, if not, then exit this function
-            if (item.id != -1)
+            if (item.id == -1)
                 yield break;
 
             // Show item's properties
             Vector3 slotPos = transform.position;
-            ItemPropertyDisplayer.Instance.SetDisplay(slotPos, item.id);
+            ItemPropertyDisplayer.Instance.SetDisplay(slotPos, ref item);
             ItemPropertyDisplayer.Instance.gameObject.SetActive(true);
         }
     }

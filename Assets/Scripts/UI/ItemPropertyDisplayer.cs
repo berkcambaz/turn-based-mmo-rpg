@@ -17,11 +17,12 @@ public class ItemPropertyDisplayer : MonoBehaviour
         Instance = this;
     }
 
-    public void SetDisplay(Vector3 _pos, int _itemId)
+    public void SetDisplay(Vector3 _pos, ref Item _item)
     {
         transform.position = _pos;
         Debug.Log(transform.position);
-        itemName.text = ItemManager.Instance.itemProperties[_itemId].name;
-        itemDescription.text = ItemManager.Instance.itemProperties[_itemId].description;
+        itemName.text = ItemManager.Instance.itemProperties[_item.id].name;
+        itemDescription.text = ItemManager.Instance.itemProperties[_item.id].description;
+        ItemModifierManager.Instance.SetModifiers(ref _item);
     }
 }

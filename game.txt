@@ -1,13 +1,13 @@
 --- Attributes ---
 Health point (hp)
-Physical damage (pda)
-Magical damage (mda)
-Physical defence (pde)
-Magical defence (mde)
-Critical strike (cs)
+Attack damage (ad)
+Ability power (ap)
+Armor (armor)
+Magic resist (mr)
+Armor penetration (arpen)
+Magic penetration (mapen)
+Critical Strike (cs)
 Block (b)
-Physical defence penetration (pdp)
-Magical defence penetration (mdp)
 
 --- Levels ---
 1 to 100
@@ -29,7 +29,7 @@ Sprite: Emerald
 *Bonus effects if 3, 4 or 5 pieces of a set is worn.
 
 --- Attributes of Item's ---
-: pda of Swords and Bows, mda of Staffs
+: ad of Swords and Bows, mda of Staffs
                low      med     high    
 Wood      -     24 -     32 -     40
 Stone     -     96 -    128 -    150
@@ -39,6 +39,16 @@ Netherite -  6.144 -  8.192 - 10.240
 Diamond   - 24.576 - 32.768 - 40.960
 
 --- Item Types ---
-0 = Armor
-1 = Weapon
-2 = Accessory
+-1 = None
+ 0 = Any
+ 1 = Armor_Helmet
+ 2 = Armor_Chestplate
+ 3 = Armor_Leggings
+ 4 = Armor_Boots
+ 5 = Weapon_Sword
+ 6 = Weapon_Bow
+ 7 = Weapon_Staff
+
+--- Ideas ---
+*Quiver with 2 bar slot
+*Trinkets (Gives passive on equip)
