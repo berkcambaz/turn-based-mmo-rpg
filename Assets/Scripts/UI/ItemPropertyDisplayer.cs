@@ -10,6 +10,7 @@ public class ItemPropertyDisplayer : MonoBehaviour
     public Text itemName;
     public Text itemDescription;
 
+    public bool hovered = false;
 
     // Called by UIManager.Init when the game starts
     public void Init()
@@ -24,5 +25,16 @@ public class ItemPropertyDisplayer : MonoBehaviour
         itemName.text = ItemManager.Instance.itemProperties[_item.id].name;
         itemDescription.text = ItemManager.Instance.itemProperties[_item.id].description;
         ItemModifierManager.Instance.SetModifiers(ref _item);
+    }
+
+    public void OnPointerEnter()
+    {
+        hovered = true;
+    }
+
+    public void OnPointerExit()
+    {
+        gameObject.SetActive(false);
+        hovered = false;
     }
 }

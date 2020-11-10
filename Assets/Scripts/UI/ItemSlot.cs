@@ -34,8 +34,7 @@ public class ItemSlot : MonoBehaviour
         Debug.Log($"Exited from {slotId}");
         // Since the mouse is not anymore hovering on the slot, disable the slot shadow
         ItemSlotShadow.Instance.Disable();
-        StopAllCoroutines();
-        ItemPropertyDisplayer.Instance.gameObject.SetActive(false);
+        StartCoroutine(DisablePropertyDisplayer());
     }
 
     public void OnPointerClick()
@@ -66,6 +65,17 @@ public class ItemSlot : MonoBehaviour
             Vector3 slotPos = transform.position;
             ItemPropertyDisplayer.Instance.SetDisplay(slotPos, ref item);
             ItemPropertyDisplayer.Instance.gameObject.SetActive(true);
+        }
+    }
+
+    private IEnumerator DisablePropertyDisplayer()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        if (!ItemPropertyDisplayer.Instance.hovered)
+        {
+            StopAllCoroutines();
+            ItemPropertyDisplayer.Instance.gameObject.SetActive(false);
         }
     }
 }
