@@ -38,6 +38,12 @@ public class ItemHolder : MonoBehaviour
                 holderSlotId = -1;
                 holderItemType = ItemType.None;
 
+                if (_slotItemType == ItemType.Any)
+                    ItemPropertyDisplayer.Instance.SetDisplay(InventoryManager.Instance.inventoryItemSlots[_slotId].transform.position, ref _item);
+                else
+                    ItemPropertyDisplayer.Instance.SetDisplay(InventoryManager.Instance.equipmentItemSlots[_slotId].transform.position, ref _item);
+
+
                 return true;
             }
             else    // If there is an item in the item slot
@@ -46,6 +52,11 @@ public class ItemHolder : MonoBehaviour
                 itemHeld = _item;
                 image.sprite = ItemManager.Instance.itemProperties[_item.id].sprite;
                 _item = oldItem;
+
+                if (_slotItemType == ItemType.Any)
+                    ItemPropertyDisplayer.Instance.SetDisplay(InventoryManager.Instance.inventoryItemSlots[_slotId].transform.position, ref _item);
+                else
+                    ItemPropertyDisplayer.Instance.SetDisplay(InventoryManager.Instance.equipmentItemSlots[_slotId].transform.position, ref _item);
 
                 return true;
             }

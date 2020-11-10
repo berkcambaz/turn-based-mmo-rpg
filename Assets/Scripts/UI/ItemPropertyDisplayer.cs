@@ -21,7 +21,6 @@ public class ItemPropertyDisplayer : MonoBehaviour
     public void SetDisplay(Vector3 _pos, ref Item _item)
     {
         transform.position = _pos;
-        Debug.Log(transform.position);
         itemName.text = ItemManager.Instance.itemProperties[_item.id].name;
         itemDescription.text = ItemManager.Instance.itemProperties[_item.id].description;
         ItemModifierManager.Instance.SetModifiers(ref _item);

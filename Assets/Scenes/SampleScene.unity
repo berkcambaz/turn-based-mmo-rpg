@@ -4113,6 +4113,10 @@ PrefabInstance:
       propertyPath: slotItemType
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -4316565509542350633, guid: db3776f61ebb2634fbeaac8112653a56, type: 3}
+      propertyPath: item.id
+      value: 29
+      objectReference: {fileID: 0}
     - target: {fileID: 5910220149380656474, guid: db3776f61ebb2634fbeaac8112653a56, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4869,6 +4873,10 @@ PrefabInstance:
     - target: {fileID: -4316565509542350633, guid: db3776f61ebb2634fbeaac8112653a56, type: 3}
       propertyPath: slotItemType
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4316565509542350633, guid: db3776f61ebb2634fbeaac8112653a56, type: 3}
+      propertyPath: item.id
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 5910220149380656474, guid: db3776f61ebb2634fbeaac8112653a56, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9957,6 +9965,10 @@ PrefabInstance:
       propertyPath: slotItemType
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: -4316565509542350633, guid: db3776f61ebb2634fbeaac8112653a56, type: 3}
+      propertyPath: item.id
+      value: 23
+      objectReference: {fileID: 0}
     - target: {fileID: 5910220149380656474, guid: db3776f61ebb2634fbeaac8112653a56, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -11305,7 +11317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4316565509542350633, guid: db3776f61ebb2634fbeaac8112653a56, type: 3}
       propertyPath: slotItemType
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -4316565509542350633, guid: db3776f61ebb2634fbeaac8112653a56, type: 3}
       propertyPath: item.durability
@@ -11836,6 +11848,10 @@ PrefabInstance:
     - target: {fileID: -4316565509542350633, guid: db3776f61ebb2634fbeaac8112653a56, type: 3}
       propertyPath: slotItemType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4316565509542350633, guid: db3776f61ebb2634fbeaac8112653a56, type: 3}
+      propertyPath: item.id
+      value: 41
       objectReference: {fileID: 0}
     - target: {fileID: 5910220149380656474, guid: db3776f61ebb2634fbeaac8112653a56, type: 3}
       propertyPath: m_LocalPosition.x
