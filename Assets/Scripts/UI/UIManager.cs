@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     public ItemSlotShadow itemSlotShadow;
     public ItemPropertyDisplayer itemPropertyDisplayer;
     public ItemHolder itemHolder;
+    public PlayerDisplayer playerDisplayer;
 
     private bool inventoryTabOpened = false;
     private bool skillsTabOpened = false;
@@ -24,6 +25,7 @@ public class UIManager : MonoBehaviour
         itemSlotShadow.Init();
         itemPropertyDisplayer.Init(); 
         itemHolder.Init();
+        playerDisplayer.Init();
     }
 
     // This function is called by UI buttons

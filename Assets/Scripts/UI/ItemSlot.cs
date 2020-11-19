@@ -48,9 +48,23 @@ public class ItemSlot : MonoBehaviour
         if (itemChanged)
         {
             if (item.id == -1)
+            {
                 image.sprite = ImageManager.Instance.transparent1x1;
+
+                if (slotItemType != ItemType.Any)
+                {
+                    PlayerDisplayer.Instance.ChangeArmor(-1, slotItemType);
+                }
+            }
             else
+            {
                 image.sprite = ItemManager.Instance.itemProperties[item.id].sprite;
+
+                if (slotItemType != ItemType.Any)
+                {
+                    PlayerDisplayer.Instance.ChangeArmor(item.id, slotItemType);
+                }
+            }
 
             SetDurabilityBar();
         }
