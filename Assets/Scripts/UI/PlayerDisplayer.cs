@@ -13,6 +13,7 @@ public class PlayerDisplayer : MonoBehaviour
     public Image modelChestplate;
     public Image modelLeggings;
     public Image modelBoots;
+    public Image modelWeapon;
 
 
     // Called by UIManager.Init when the game starts
@@ -21,7 +22,7 @@ public class PlayerDisplayer : MonoBehaviour
         Instance = this;
     }
 
-    public void ChangeArmor(int _itemId, ItemType _type)
+    public void ChangeModel(int _itemId, ItemType _type)
     {
         switch (_type)
         {
@@ -54,10 +55,13 @@ public class PlayerDisplayer : MonoBehaviour
 
                 break;
             case ItemType.Weapon_Sword:
-                break;
             case ItemType.Weapon_Bow:
-                break;
             case ItemType.Weapon_Staff:
+                if (_itemId == -1)
+                    modelWeapon.sprite = ImageManager.Instance.transparent1x1;
+                else
+                    modelWeapon.sprite = ItemManager.Instance.itemProperties[_itemId].sprite;
+                
                 break;
             case ItemType.Accessory:
                 break;

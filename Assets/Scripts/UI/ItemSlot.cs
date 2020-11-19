@@ -57,11 +57,12 @@ public class ItemSlot : MonoBehaviour
                     case ItemType.Armor_Chestplate:
                     case ItemType.Armor_Leggings:
                     case ItemType.Armor_Boots:
-                        PlayerDisplayer.Instance.ChangeArmor(-1, slotItemType);
+                        PlayerDisplayer.Instance.ChangeModel(-1, slotItemType);
                         break;
                     case ItemType.Weapon_Sword:
                     case ItemType.Weapon_Bow:
                     case ItemType.Weapon_Staff:
+                        PlayerDisplayer.Instance.ChangeModel(-1, slotItemType);
                         break;
                     case ItemType.Accessory:
                         break;
@@ -79,11 +80,12 @@ public class ItemSlot : MonoBehaviour
                     case ItemType.Armor_Chestplate:
                     case ItemType.Armor_Leggings:
                     case ItemType.Armor_Boots:
-                        PlayerDisplayer.Instance.ChangeArmor(item.id, slotItemType);
+                        PlayerDisplayer.Instance.ChangeModel(item.id, slotItemType);
                         break;
                     case ItemType.Weapon_Sword:
                     case ItemType.Weapon_Bow:
                     case ItemType.Weapon_Staff:
+                        PlayerDisplayer.Instance.ChangeModel(item.id, slotItemType);
                         break;
                     case ItemType.Accessory:
                         break;

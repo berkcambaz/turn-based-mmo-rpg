@@ -520,7 +520,7 @@ public class ItemManager : MonoBehaviour
             "",
             ItemType.Weapon_Staff,
             index,
-            basePath + "    wood_staff",
+            basePath + "wood_staff",
             new Modifier[] {
                 new Modifier(ModifierType.Ability_Power, new int[] { 24, 32, 40 })
             });
