@@ -51,18 +51,44 @@ public class ItemSlot : MonoBehaviour
             {
                 image.sprite = ImageManager.Instance.transparent1x1;
 
-                if (slotItemType != ItemType.Any)
+                switch (slotItemType)
                 {
-                    PlayerDisplayer.Instance.ChangeArmor(-1, slotItemType);
+                    case ItemType.Armor_Helmet:
+                    case ItemType.Armor_Chestplate:
+                    case ItemType.Armor_Leggings:
+                    case ItemType.Armor_Boots:
+                        PlayerDisplayer.Instance.ChangeArmor(-1, slotItemType);
+                        break;
+                    case ItemType.Weapon_Sword:
+                    case ItemType.Weapon_Bow:
+                    case ItemType.Weapon_Staff:
+                        break;
+                    case ItemType.Accessory:
+                        break;
+                    default:
+                        break;
                 }
             }
             else
             {
                 image.sprite = ItemManager.Instance.itemProperties[item.id].sprite;
 
-                if (slotItemType != ItemType.Any)
+                switch (slotItemType)
                 {
-                    PlayerDisplayer.Instance.ChangeArmor(item.id, slotItemType);
+                    case ItemType.Armor_Helmet:
+                    case ItemType.Armor_Chestplate:
+                    case ItemType.Armor_Leggings:
+                    case ItemType.Armor_Boots:
+                        PlayerDisplayer.Instance.ChangeArmor(item.id, slotItemType);
+                        break;
+                    case ItemType.Weapon_Sword:
+                    case ItemType.Weapon_Bow:
+                    case ItemType.Weapon_Staff:
+                        break;
+                    case ItemType.Accessory:
+                        break;
+                    default:
+                        break;
                 }
             }
 

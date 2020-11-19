@@ -2508,7 +2508,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4316565509542350633, guid: db3776f61ebb2634fbeaac8112653a56, type: 3}
       propertyPath: item.durability
-      value: -1
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4316565509542350633, guid: db3776f61ebb2634fbeaac8112653a56, type: 3}
+      propertyPath: item.id
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 5910220149380656474, guid: db3776f61ebb2634fbeaac8112653a56, type: 3}
       propertyPath: m_LocalPosition.x
