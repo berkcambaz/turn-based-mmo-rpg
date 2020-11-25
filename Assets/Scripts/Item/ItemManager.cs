@@ -23,8 +23,6 @@ public class ItemManager : MonoBehaviour
         int index = 0;
         string basePath;
 
-
-
         basePath = "Sprites/Armors/Helmets/";
         #region Helmet
 

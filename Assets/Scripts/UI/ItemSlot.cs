@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemSlot : MonoBehaviour
+public class ItemSlot : MonoBehaviour, IPointerClickHandler
 {
     public Image image;
     public Image durabilityImage;
@@ -30,7 +31,6 @@ public class ItemSlot : MonoBehaviour
         Debug.Log($"Entered to {slotId}");
         // Since the mouse hovering on the slot, enable slot shadow on the slot's position
         ItemSlotShadow.Instance.Enable(transform.position);
-        StartCoroutine(ShowItemProperty());
     }
 
     public void OnPointerExit()
@@ -41,60 +41,67 @@ public class ItemSlot : MonoBehaviour
         StartCoroutine(DisablePropertyDisplayer());
     }
 
-    public void OnPointerClick()
+    public void OnPointerClick(PointerEventData pointerEventData)
     {
         Debug.Log($"Clicked at {slotId}");
-        bool itemChanged = ItemHolder.Instance.HoldItem(ref item, slotItemType, slotId);
-        if (itemChanged)
+        if (pointerEventData.button == PointerEventData.InputButton.Left)
         {
-            if (item.id == -1)
+            bool itemChanged = ItemHolder.Instance.HoldItem(ref item, slotItemType, slotId);
+            if (itemChanged)
             {
-                image.sprite = ImageManager.Instance.transparent1x1;
-
-                switch (slotItemType)
+                if (item.id == -1)
                 {
-                    case ItemType.Armor_Helmet:
-                    case ItemType.Armor_Chestplate:
-                    case ItemType.Armor_Leggings:
-                    case ItemType.Armor_Boots:
-                        PlayerDisplayer.Instance.ChangeModel(-1, slotItemType);
-                        break;
-                    case ItemType.Weapon_Sword:
-                    case ItemType.Weapon_Bow:
-                    case ItemType.Weapon_Staff:
-                        PlayerDisplayer.Instance.ChangeModel(-1, slotItemType);
-                        break;
-                    case ItemType.Accessory:
-                        break;
-                    default:
-                        break;
-                }
-            }
-            else
-            {
-                image.sprite = ItemManager.Instance.itemProperties[item.id].sprite;
+                    image.sprite = ImageManager.Instance.transparent1x1;
 
-                switch (slotItemType)
+                    switch (slotItemType)
+                    {
+                        case ItemType.Armor_Helmet:
+                        case ItemType.Armor_Chestplate:
+                        case ItemType.Armor_Leggings:
+                        case ItemType.Armor_Boots:
+                            PlayerDisplayer.Instance.ChangeModel(-1, slotItemType);
+                            break;
+                        case ItemType.Weapon_Sword:
+                        case ItemType.Weapon_Bow:
+                        case ItemType.Weapon_Staff:
+                            PlayerDisplayer.Instance.ChangeModel(-1, slotItemType);
+                            break;
+                        case ItemType.Accessory:
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else
                 {
-                    case ItemType.Armor_Helmet:
-                    case ItemType.Armor_Chestplate:
-                    case ItemType.Armor_Leggings:
-                    case ItemType.Armor_Boots:
-                        PlayerDisplayer.Instance.ChangeModel(item.id, slotItemType);
-                        break;
-                    case ItemType.Weapon_Sword:
-                    case ItemType.Weapon_Bow:
-                    case ItemType.Weapon_Staff:
-                        PlayerDisplayer.Instance.ChangeModel(item.id, slotItemType);
-                        break;
-                    case ItemType.Accessory:
-                        break;
-                    default:
-                        break;
-                }
-            }
+                    image.sprite = ItemManager.Instance.itemProperties[item.id].sprite;
 
-            SetDurabilityBar();
+                    switch (slotItemType)
+                    {
+                        case ItemType.Armor_Helmet:
+                        case ItemType.Armor_Chestplate:
+                        case ItemType.Armor_Leggings:
+                        case ItemType.Armor_Boots:
+                            PlayerDisplayer.Instance.ChangeModel(item.id, slotItemType);
+                            break;
+                        case ItemType.Weapon_Sword:
+                        case ItemType.Weapon_Bow:
+                        case ItemType.Weapon_Staff:
+                            PlayerDisplayer.Instance.ChangeModel(item.id, slotItemType);
+                            break;
+                        case ItemType.Accessory:
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                SetDurabilityBar();
+            }
+        }
+        else if (pointerEventData.button == PointerEventData.InputButton.Right)
+        {
+            ShowItemProperty();
         }
     }
 
@@ -126,21 +133,13 @@ public class ItemSlot : MonoBehaviour
         }
     }
 
-    private IEnumerator ShowItemProperty()
+    private void ShowItemProperty()
     {
         if (item.id != -1)
         {
-            yield return new WaitForSeconds(0.25f);
-
-            // Check if after 0.25 seconds, there is still an
-            // item in the slot, if not, then exit this function
-            if (item.id == -1)
-                yield break;
-
             // Show item's properties
             Vector3 slotPos = transform.position;
-            ItemPropertyDisplayer.Instance.SetDisplay(slotPos, ref item);
-            ItemPropertyDisplayer.Instance.gameObject.SetActive(true);
+            ItemPropertyDisplayer.Instance.SetDisplay(slotPos, item);
         }
     }
 
@@ -151,7 +150,7 @@ public class ItemSlot : MonoBehaviour
         if (!ItemPropertyDisplayer.Instance.hovered)
         {
             StopAllCoroutines();
-            ItemPropertyDisplayer.Instance.gameObject.SetActive(false);
+            //ItemPropertyDisplayer.Instance.gameObject.SetActive(false);
         }
     }
 }

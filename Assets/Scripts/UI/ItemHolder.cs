@@ -39,9 +39,9 @@ public class ItemHolder : MonoBehaviour
                 holderItemType = ItemType.None;
 
                 if (_slotItemType == ItemType.Any)
-                    ItemPropertyDisplayer.Instance.SetDisplay(InventoryManager.Instance.inventoryItemSlots[_slotId].transform.position, ref _item);
+                    ItemPropertyDisplayer.Instance.SetDisplay(InventoryManager.Instance.inventoryItemSlots[_slotId].transform.position, _item);
                 else
-                    ItemPropertyDisplayer.Instance.SetDisplay(InventoryManager.Instance.equipmentItemSlots[_slotId].transform.position, ref _item);
+                    ItemPropertyDisplayer.Instance.SetDisplay(InventoryManager.Instance.equipmentItemSlots[_slotId].transform.position, _item);
 
 
                 return true;
@@ -54,9 +54,9 @@ public class ItemHolder : MonoBehaviour
                 _item = oldItem;
 
                 if (_slotItemType == ItemType.Any)
-                    ItemPropertyDisplayer.Instance.SetDisplay(InventoryManager.Instance.inventoryItemSlots[_slotId].transform.position, ref _item);
+                    ItemPropertyDisplayer.Instance.SetDisplay(InventoryManager.Instance.inventoryItemSlots[_slotId].transform.position, _item);
                 else
-                    ItemPropertyDisplayer.Instance.SetDisplay(InventoryManager.Instance.equipmentItemSlots[_slotId].transform.position, ref _item);
+                    ItemPropertyDisplayer.Instance.SetDisplay(InventoryManager.Instance.equipmentItemSlots[_slotId].transform.position, _item);
 
                 return true;
             }
